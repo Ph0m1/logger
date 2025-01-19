@@ -78,6 +78,13 @@ func (l *BaseLogger) Error(args ...interface{}) {
 	l.outputLog("ERROR:", args...)
 }
 
+func (l *BaseLogger) Critical(args ...interface{}) {
+	if l.level > LevelCritical {
+		return
+	}
+	l.outputLog("CRITICAL:", args...)
+}
+
 func (l *BaseLogger) Fatal(args ...interface{}) {
 	if l.level > LevelFatal {
 		return
